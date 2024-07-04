@@ -38,7 +38,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="1080.0" maxWidth="1920.0" prefHeight="1080.0" prefWidth="1920.0" spacing="50.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.joaquinpacete.will.MenuPanel.MenuController">
+<VBox alignment="CENTER" maxHeight="1080.0" maxWidth="1920.0" prefHeight="1080.0" prefWidth="1920.0" spacing="50.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.joaquinpacete.will.Controllers.MenuController">
   <children>
       <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="106.0" prefWidth="1918.0" text="Will" textAlignment="CENTER">
          <font>

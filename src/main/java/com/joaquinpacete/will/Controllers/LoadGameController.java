@@ -1,13 +1,12 @@
-package com.joaquinpacete.will.NewGamePanel;
+package com.joaquinpacete.will.Controllers;
 
 import com.joaquinpacete.will.SceneController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-import javax.swing.*;
 import java.io.IOException;
 
-public class NewGameController extends SceneController {
+public class LoadGameController extends SceneController {
     @FXML
     public void backToMenu(ActionEvent e) throws IOException {
         System.out.println("Back to Menu");

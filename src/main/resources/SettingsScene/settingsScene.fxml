@@ -5,10 +5,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" spacing="30.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.joaquinpacete.will.Controllers.NewGameController">
    <children>
-      <Label text="NEW GAME SCENE">
+      <Label text="SETTINGS">
          <font>
             <Font name="pixelmix bold Regular" size="40.0" />
          </font>

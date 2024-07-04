@@ -1,4 +1,4 @@
-package com.joaquinpacete.will.MenuPanel;
+package com.joaquinpacete.will.Controllers;
 
 import com.joaquinpacete.will.SceneController;
 import javafx.event.ActionEvent;
@@ -20,13 +20,15 @@ public class MenuController extends SceneController {
     }
 
     @FXML
-    public void loadGame(ActionEvent e) {
+    public void loadGame(ActionEvent e) throws IOException {
         System.out.println("Load Game");
+        setLoadGameScene(e);
     }
 
     @FXML
-    public void settings(ActionEvent e) {
+    public void settings(ActionEvent e) throws IOException {
         System.out.println("Settings");
+        setSettingsScene(e);
     }
 
     @FXML

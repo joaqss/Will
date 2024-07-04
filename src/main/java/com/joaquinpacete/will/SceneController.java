@@ -29,4 +29,20 @@ public class SceneController {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void setLoadGameScene(ActionEvent e) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/LoadGameScene/loadGameScene.fxml"));
+        stage = (Stage) ((Node)e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void setSettingsScene(ActionEvent e) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/SettingsScene/settingsScene.fxml"));
+        stage = (Stage) ((Node)e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }
