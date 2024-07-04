@@ -1,5 +1,7 @@
 package com.joaquinpacete.will;
 
+import com.joaquinpacete.will.MenuPanel.MenuScene;
+import com.joaquinpacete.will.NewGamePanel.NewGameScene;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -14,6 +16,9 @@ import java.awt.*;
 import java.io.IOException;
 
 public class Engine extends Application {
+
+    SceneController sceneController = new SceneController();
+
     @Override
     public void start(Stage stage) throws IOException {
 
@@ -32,10 +37,8 @@ public class Engine extends Application {
         Image icon = new Image(getClass().getResourceAsStream("/icon.png"));
         stage.getIcons().add(icon);
 
-        Parent root = FXMLLoader.load(getClass().getResource("/landingpage.fxml"));
-        Scene landingScene = new Scene(root, Color.BEIGE);
-
-        stage.setScene(landingScene);
+        MenuScene menuScene = new MenuScene();
+        stage.setScene(menuScene.getScene());
         stage.show();
     }
 

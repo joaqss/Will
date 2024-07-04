@@ -14,4 +14,8 @@ module com.joaquinpacete.will {
 
     opens com.joaquinpacete.will to javafx.fxml;
     exports com.joaquinpacete.will;
+    exports com.joaquinpacete.will.MenuPanel;
+    exports com.joaquinpacete.will.NewGamePanel;
+    opens com.joaquinpacete.will.MenuPanel to javafx.fxml;
+    opens com.joaquinpacete.will.NewGamePanel to javafx.fxml;
 }
