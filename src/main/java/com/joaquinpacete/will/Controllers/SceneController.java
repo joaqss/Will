@@ -1,4 +1,4 @@
-package com.joaquinpacete.will;
+package com.joaquinpacete.will.Controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -44,5 +44,9 @@ public class SceneController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void setGameScene(ActionEvent e) throws IOException {
+        
     }
 }

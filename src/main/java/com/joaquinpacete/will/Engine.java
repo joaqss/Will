@@ -1,5 +1,6 @@
 package com.joaquinpacete.will;
 
+import com.joaquinpacete.will.Controllers.SceneController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

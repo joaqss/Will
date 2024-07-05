@@ -1,6 +1,5 @@
 package com.joaquinpacete.will.Controllers;
 
-import com.joaquinpacete.will.SceneController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
