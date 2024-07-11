@@ -10,20 +10,28 @@ public class Display extends Engine {
     private Player player;
     public Scene scene;
 
+    public Display() {
+
+    }
+
     public void setupAndShowStage(Stage stage) {
         Pane root = new Pane();
         player = new Player(500,500,50,50);
         root.getChildren().add(player.getGraphic()); // Add player to the pane
         scene = new Scene(root, getWidth(), getHeight());
-        Controls controls = new Controls(this);
         GameLoop gameLoop = new GameLoop(this);
+        Controls controls = new Controls(this, gameLoop);
+
+        Thread gameLoopThread = new Thread(gameLoop);
+        gameLoopThread.start();
 
         stage.setScene(scene);
         stage.setTitle("Game Display");
     }
 
     public void update() {
-        System.out.println("update called on display");
+        player.update();
+
     }
 
     public Scene getScene() {

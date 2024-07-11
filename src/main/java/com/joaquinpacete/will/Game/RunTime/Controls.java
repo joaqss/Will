@@ -8,10 +8,12 @@ import java.util.HashSet;
 public class Controls {
 
     private final Display display;
+    private final GameLoop gameLoop;
     private HashSet<KeyCode> pressedKeys = new HashSet<>();
 
-    public Controls(Display display) {
+    public Controls(Display display, GameLoop gameLoop) {
         this.display = display;
+        this.gameLoop = gameLoop;
         setupKeyHandlers();
         startMovementTimer();
     }
@@ -47,6 +49,22 @@ public class Controls {
                     display.getPlayer().setPLAYER_MOVEMENT(1.5);
                 } else {
                     display.getPlayer().setPLAYER_MOVEMENT(2.5);
+                }
+
+                if (pressedKeys.contains(KeyCode.CONTROL)) {
+                    display.getPlayer().setPLAYER_MOVEMENT(3.5);
+                } else {
+                    display.getPlayer().setPLAYER_MOVEMENT(2.5);
+                }
+
+                if (pressedKeys.contains(KeyCode.I)) {
+                    // inventory
+
+                }
+
+                if (pressedKeys.contains(KeyCode.ESCAPE)) {
+                    // pause menu
+
                 }
             }
         }.start();

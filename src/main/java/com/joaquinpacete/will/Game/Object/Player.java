@@ -18,6 +18,9 @@ public class Player {
         this.player = new Rectangle(x, y, width, height);
     }
 
+    public void update() {
+    }
+
     public Rectangle getGraphic() {
         return player;
     }
@@ -52,4 +55,5 @@ public class Player {
     public void setPLAYER_MOVEMENT(double PLAYER_MOVEMENT) {
         this.PLAYER_MOVEMENT = PLAYER_MOVEMENT;
     }
+
 }

@@ -1,49 +1,60 @@
+// fps printer obtained from: https://stackoverflow.com/questions/28287398/what-is-the-preferred-way-of-getting-the-frame-rate-of-a-javafx-application
+
 package com.joaquinpacete.will.Game.RunTime;
 
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
 
-public class GameLoop {
+public class GameLoop implements Runnable {
     private final Display display;
-    private AnimationTimer gameLoop;
-    private long lastTime = System.nanoTime();
-    private double deltaTime = 0;
-    private final double desiredFPS = 120;
-    private final double desiredFrameTime = 1e9 / desiredFPS; // Nanoseconds per frame
-    private double totalRuntime = 0;
+    private boolean running;
+    private final double updateRate = 1.0d/60.0d;
+
+    private long nextStatTime;
+    private int fps, ups;
+
 
     public GameLoop(Display display) {
         this.display = display;
-        runGameLoop();
     }
 
-    private void runGameLoop() {
-        gameLoop = new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                deltaTime = now - lastTime;
-                totalRuntime += deltaTime;
+    @Override
+    public void run() {
+        running = true;
+        double accumulator = 0;
+        long currentTime , lastUpdate = System.currentTimeMillis();
+        nextStatTime = System.currentTimeMillis() + 1000;
 
-                // Convert deltaTime to seconds for easier use in game logic
-                double deltaTimeSeconds = deltaTime / 1e9;
+        while (running) {
+            currentTime = System.currentTimeMillis();
+            double lastRenderTimeInSeconds = (currentTime - lastUpdate) / 1000.0d;
+            accumulator += lastRenderTimeInSeconds;
+            lastUpdate = currentTime;
 
-                // Game update and render methods can use deltaTimeSeconds
-                System.out.println("GameLoop running at: " + System.currentTimeMillis() + ", FPS: " + (1e9 / deltaTime) + ", Runtime: " + (totalRuntime / 1e9) + " seconds");
-                display.update();
-
-                // Sleep if the frame was processed faster than desiredFrameTime
-                long sleepTime = (long) (desiredFrameTime - (System.nanoTime() - now)) / 1_000_000; // Convert to milliseconds
-                if (sleepTime > 0) {
-                    try {
-                        Thread.sleep(sleepTime);
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                    }
-                }
-
-                // Update lastTime for the next frame's deltaTime calculation
-                lastTime = now;
+            while(accumulator > updateRate) {
+                update();
+                accumulator -= updateRate;
             }
-        };
-        gameLoop.start();
+            render();
+            printStats();
+        }
+    }
+
+    private void printStats() {
+        if (System.currentTimeMillis() > nextStatTime) {
+            System.out.printf("FPS: %d, UPS: %d\n", fps, ups);
+            fps = 0;
+            ups = 0;
+            nextStatTime = System.currentTimeMillis() + 1000;
+        }
+    }
+
+    private void render() {
+        fps++;
+    }
+
+    private void update() {
+        display.update();
+        ups++;
     }
 }
