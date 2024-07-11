@@ -1,4 +1,4 @@
 package com.joaquinpacete.will.Game.Object;
 
-public class Object {
+public class Mob {
 }

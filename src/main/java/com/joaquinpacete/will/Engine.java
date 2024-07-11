@@ -51,4 +51,13 @@ public class Engine extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
+    // getters
+    public int getWidth() {
+        return SCREEN_WIDTH;
+    }
+
+    public int getHeight() {
+        return SCREEN_HEIGHT;
+    }
 }
