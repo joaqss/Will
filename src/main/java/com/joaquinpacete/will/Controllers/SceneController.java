@@ -1,10 +1,13 @@
 package com.joaquinpacete.will.Controllers;
 
+import com.joaquinpacete.will.Game.RunTime.Display;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -47,6 +50,9 @@ public class SceneController {
     }
 
     public void setGameScene(ActionEvent e) throws IOException {
-        
+        Display gameDisplay = new Display();
+        stage = (Stage) ((Node)e.getSource()).getScene().getWindow();
+        gameDisplay.setupAndShowStage(stage);
+//        stage.hide();
     }
 }

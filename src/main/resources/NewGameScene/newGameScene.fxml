@@ -111,7 +111,7 @@
                   <Font name="pixelmix bold Regular" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="backButton1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#backToMenu" prefHeight="40.0" prefWidth="200.0" text="Start">
+            <Button fx:id="startButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#startGame" prefHeight="40.0" prefWidth="200.0" text="Start">
                <font>
                   <Font name="pixelmix bold Regular" size="16.0" />
                </font>

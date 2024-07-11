@@ -17,14 +17,18 @@ public class Engine extends Application {
     SceneController sceneController = new SceneController();
     Scene scene;
 
+    Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+    public final int SCREEN_WIDTH = (int) dimension.getWidth();
+    public final int SCREEN_HEIGHT = (int) dimension.getHeight();
+    public final int TILE_SIZE = 32;
+    public final int WORLD_WIDTH = (SCREEN_WIDTH / TILE_SIZE)*4;
+    public final int WORLD_HEIGHT = (SCREEN_HEIGHT / TILE_SIZE)*4;
+
     @Override
     public void start(Stage stage) throws IOException {
 
-        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-        int screenWidth = (int) dimension.getWidth();
-        int screenHeight = (int) dimension.getHeight();
-        stage.setWidth(screenWidth);
-        stage.setHeight(screenHeight);
+        stage.setWidth(SCREEN_WIDTH);
+        stage.setHeight(SCREEN_HEIGHT);
         stage.setResizable(false);
         stage.setTitle("Will");
 
@@ -45,6 +49,6 @@ public class Engine extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 }

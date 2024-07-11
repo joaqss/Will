@@ -16,4 +16,5 @@ module com.joaquinpacete.will {
     exports com.joaquinpacete.will;
     exports com.joaquinpacete.will.Controllers;
     opens com.joaquinpacete.will.Controllers to javafx.fxml;
+
 }
