@@ -9,6 +9,8 @@ public class Player {
     public int width, height;
     public Rectangle player;
     public double PLAYER_MOVEMENT = 2.5;
+    public double PLAYER_HEALTH = 100;
+    public double PLAYER_STAMINA = 100;
 
     public Player(double x, double y, int width, int height) {
         this.x = x;

@@ -17,6 +17,7 @@ public class SceneController {
     private Scene scene;
     private Parent root;
 
+    // main scenes
     public void setMenuScene(ActionEvent e) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/MenuPanelScene/menuScene.fxml"));
         stage = (Stage) ((Node)e.getSource()).getScene().getWindow();
@@ -53,6 +54,19 @@ public class SceneController {
         Display gameDisplay = new Display();
         stage = (Stage) ((Node)e.getSource()).getScene().getWindow();
         gameDisplay.setupAndShowStage(stage);
-//        stage.hide();
     }
+
+    // end of main scenes
+
+    // sub scenes
+    public void setInventoryScene(ActionEvent e) throws IOException {
+
+    }
+
+    public void setPauseScene(ActionEvent e) throws IOException {
+
+    }
+
+    // end of sub scenes
+
 }
