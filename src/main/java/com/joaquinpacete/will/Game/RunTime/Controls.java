@@ -68,7 +68,8 @@ public class Controls {
 
         // slow movement
         if (pressedKeys.contains(KeyCode.SHIFT)) {
-            display.getPlayer().setPLAYER_MOVEMENT(1.5);
+            display.getPlayer().setPLAYER_MOVEMENT(1);
+            System.out.println("SHIFT");
         } else {
             display.getPlayer().setPLAYER_MOVEMENT(2.5);
         }
@@ -84,26 +85,24 @@ public class Controls {
     public void hotbar() {
         if (pressedKeys.contains(KeyCode.DIGIT1)) {
             hotbar.selectSlot(0);
-        } else if (pressedKeys.contains(KeyCode.DIGIT2)) {
+        } if (pressedKeys.contains(KeyCode.DIGIT2)) {
             hotbar.selectSlot(1);
-        } else if (pressedKeys.contains(KeyCode.DIGIT3)) {
+        } if (pressedKeys.contains(KeyCode.DIGIT3)) {
             hotbar.selectSlot(2);
-        } else if (pressedKeys.contains(KeyCode.DIGIT4)) {
+        } if (pressedKeys.contains(KeyCode.DIGIT4)) {
             hotbar.selectSlot(3);
-        } else if (pressedKeys.contains(KeyCode.DIGIT5)) {
+        } if (pressedKeys.contains(KeyCode.DIGIT5)) {
             hotbar.selectSlot(4);
-        } else if (pressedKeys.contains(KeyCode.DIGIT6)) {
+        } if (pressedKeys.contains(KeyCode.DIGIT6)) {
             hotbar.selectSlot(5);
-        } else if (pressedKeys.contains(KeyCode.DIGIT7)) {
+        } if (pressedKeys.contains(KeyCode.DIGIT7)) {
             hotbar.selectSlot(6);
-        } else if (pressedKeys.contains(KeyCode.DIGIT8)) {
+        } if (pressedKeys.contains(KeyCode.DIGIT8)) {
             hotbar.selectSlot(7);
-        } else if (pressedKeys.contains(KeyCode.DIGIT9)) {
+        } if (pressedKeys.contains(KeyCode.DIGIT9)) {
             hotbar.selectSlot(8);
-        } else if (pressedKeys.contains(KeyCode.DIGIT0)) {
+        } if (pressedKeys.contains(KeyCode.DIGIT0)) {
             hotbar.selectSlot(9);
-        } else {
-            System.out.println("Invalid slot bar key pressed.");
         }
     }
 }
