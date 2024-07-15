@@ -1,11 +1,14 @@
 package com.joaquinpacete.will.Game.RunTime;
 
 import com.joaquinpacete.will.Engine;
+import com.joaquinpacete.will.Game.MapLoader.GameMap;
 import com.joaquinpacete.will.Game.Object.Player;
 import com.joaquinpacete.will.Game.Overlays.Hotbar;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class Display extends Engine {
     private Player player;
@@ -15,7 +18,7 @@ public class Display extends Engine {
 
     }
 
-    public void setupAndShowStage(Stage stage) {
+    public void setupAndShowStage(Stage stage) throws IOException {
         Pane root = new Pane();
         root.setPrefSize(getWidth(), getHeight());
         System.out.println(root.getWidth());
@@ -27,6 +30,7 @@ public class Display extends Engine {
         scene = new Scene(root, getWidth(), getHeight());
         GameLoop gameLoop = new GameLoop(this);
         Controls controls = new Controls(this, gameLoop, hotbar);
+        GameMap gameMap = new GameMap();
 
         Thread gameLoopThread = new Thread(gameLoop);
         gameLoopThread.start();
