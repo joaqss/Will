@@ -29,7 +29,8 @@ public class GameMap {
 
             if (mapData.getLength() > 0) {
                 Element dataElement = (Element) mapData.item(0); // get the first element
-                String csvData = dataElement.getTextContent().trim().replaceAll("[\\n\\r\\s]+", ""); // get the text content of the element
+                // remove spaces and new lines and get the text content
+                String csvData = dataElement.getTextContent().trim().replaceAll("[\\n\\r\\s]+", "");
                 String[] tiles = csvData.split(","); // remove comma and split the string
                 int[] tileNumbers = Arrays.stream(tiles).mapToInt(Integer::parseInt).toArray(); // convert to int
 
