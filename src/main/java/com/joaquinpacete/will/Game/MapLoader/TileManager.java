@@ -89,6 +89,7 @@ public class TileManager {
     }
 
     public void importMapImages() throws IOException {
+        // to be changed. will load spritesheet instead.
         for (int i = 0; i < tile.length; i++) {
             tile[i] = new Tile();
             InputStream tilePath = getClass().getResourceAsStream("/Game/Images/grass.png");
