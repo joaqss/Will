@@ -11,22 +11,26 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
-import java.util.Arrays;
 
-public class GameMap {
+public class TileManager {
+    Tile[] tile;
     int mapWidth;
     int mapHeight;
     int tileWidth;
     int tileHeight;
-    int[] tileNumbers;
+    int[][] tileNumbers;
 
-    public GameMap() throws IOException {
+    public TileManager() throws IOException {
+        // to be changed
         InputStream filepath = getClass().getResourceAsStream("/Game/Maps/map1.xml");
         importMap(filepath);
+
+        // instantiate the tile array
+        tile = new Tile[20]; // change number of tiles if more are added !!
+        importMapImages();
     }
 
     private void importMap(InputStream filepath)  {
-
 
         try {
             // DOM parser, suitable for xml files
@@ -45,7 +49,16 @@ public class GameMap {
                 // remove spaces and new lines and get the text content
                 String csvData = dataElement.getTextContent().trim().replaceAll("[\\n\\r\\s]+", "");
                 String[] tiles = csvData.split(","); // remove comma and split the string
-                tileNumbers = Arrays.stream(tiles).mapToInt(Integer::parseInt).toArray(); // convert to int
+
+                // initialize yung 2D array
+                tileNumbers = new int[mapHeight][mapWidth];
+
+                for (int i=0; i<tiles.length; i++) {
+
+                    int row = i / mapWidth;
+                    int col = i % mapWidth;
+                    tileNumbers[col][row] = Integer.parseInt(tiles[i]);
+                }
 
                 System.out.println("Map Width: " + mapWidth);
                 System.out.println("Map Height: " + mapHeight);
@@ -55,7 +68,7 @@ public class GameMap {
                 // print tileNumbers
                 for (int i = 0; i < mapHeight; i++) {
                     for (int j = 0; j < mapWidth; j++) {
-                        System.out.print(tileNumbers[i + j] + " ");
+                        System.out.print(tileNumbers[j][i] + " ");
                     }
                     System.out.println();
                 }
@@ -75,10 +88,39 @@ public class GameMap {
         }
     }
 
+    public void importMapImages() throws IOException {
+        for (int i = 0; i < tile.length; i++) {
+            tile[i] = new Tile();
+            InputStream tilePath = getClass().getResourceAsStream("/Game/Images/grass.png");
+            tile[i].tileImage = new Image(tilePath);
+        }
+    }
 
     public void drawMap(GraphicsContext gc) {
-        InputStream tilesetPath = getClass().getResourceAsStream("/Game/Images/grass.png");
-        Image tileset = new Image(tilesetPath, tileWidth, tileHeight, false, false);
-        gc.drawImage(tileset, 0, 0, tileWidth, tileHeight, 0, 0, tileWidth, tileHeight);
+
+        int col = 0;
+        int row = 0;
+
+        // continuously loop until col & row gets to mapHeight and mapWidth values
+        while (col < mapHeight && row < mapWidth) {
+            gc.drawImage(tile[tileNumbers[col][row]].tileImage, row * tileWidth, col * tileHeight, tileWidth, tileHeight);
+            row++;
+
+            // reset row and increment column val
+            if (row == mapWidth) {
+                row = 0;
+                col++;
+            }
+        }
+
+
+//        for (int i = 0; i < mapHeight; i++) {
+//            for (int j = 0; j < mapWidth; j++) {
+//                int tileNumber = tileNumbers[j][i];
+//                int tileX = tileNumber % (int) (tileset.getWidth() / tileWidth);
+//                int tileY = tileNumber / (int) (tileset.getWidth() / tileWidth);
+//                gc.drawImage(tileset, tileX * tileWidth, tileY * tileHeight, tileWidth, tileHeight, j * tileWidth, i * tileHeight, tileWidth, tileHeight);
+//            }
+//        }
     }
 }

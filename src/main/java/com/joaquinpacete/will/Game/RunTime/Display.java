@@ -1,7 +1,7 @@
 package com.joaquinpacete.will.Game.RunTime;
 
 import com.joaquinpacete.will.Engine;
-import com.joaquinpacete.will.Game.MapLoader.GameMap;
+import com.joaquinpacete.will.Game.MapLoader.TileManager;
 import com.joaquinpacete.will.Game.Object.Player;
 import com.joaquinpacete.will.Game.Overlays.Hotbar;
 import javafx.scene.Scene;
@@ -29,7 +29,7 @@ public class Display extends Engine {
         // canvas and drawing initialization
         Canvas canvas = new Canvas(getWidth(), getHeight());
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        GameMap gameMap = new GameMap();
+        TileManager gameMap = new TileManager();
         gameMap.drawMap(gc);
         root.getChildren().add(canvas);
 
